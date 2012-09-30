@@ -1,0 +1,233 @@
+﻿<Window xmlns:my="clr-namespace:SharedClasses"
+		x:Class="CompareCSVs.MainWindow"
+		xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+		xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:local='clr-namespace:CompareCSVs'
+		xmlns:clr="clr-namespace:System;assembly=mscorlib"
+		Title="MainWindow"
+		Height='385'
+		Width='974'
+		Loaded='Window_Loaded'
+		WindowStartupLocation='CenterScreen'
+		Icon='app.ico'
+		xmlns:my1="clr-namespace:ExtendedGrid.ExtendedGridControl;assembly=ExtendedGrid"
+		xmlns:my2="clr-namespace:ColorPicker;assembly=ColorPicker">
+	<Window.Resources>
+		<!--<local:ComparisonCellBackgroundConverter x:Key='comparisonCellBackgroundConverter' />-->
+		<RotateTransform x:Key='rotateTransformEast'
+						 CenterX='0.5'
+						 CenterY='0.5'
+						 Angle='90' />
+		<Style TargetType="DataGridCell">
+			<Style.Resources>
+				<!--SelectedItem with focus-->
+				<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}"
+								 Color="OrangeRed"
+								 Opacity=".7" />
+				<!--SelectedItem without focus-->
+				<SolidColorBrush x:Key="{x:Static SystemColors.ControlBrushKey}"
+								 Color="OrangeRed"
+								 Opacity=".3" />
+			</Style.Resources>
+		</Style>
+		<!--<Style TargetType='DataGridCell'>
+			<Style.Triggers>
+				<Trigger Property="IsSelected"
+						 Value="True">
+					<Setter Property="Background"
+							Value="#552E8B57" />
+				</Trigger>
+			</Style.Triggers>
+		</Style>-->
+	</Window.Resources>
+	<DockPanel LastChildFill='True'>
+		<StackPanel Orientation='Horizontal'
+					DockPanel.Dock='Top'
+					Height='50'>
+			<Button Content='Load CSV 1'
+					VerticalAlignment='Center'
+					Padding='7 3'
+					Click='buttonLoadCSV1' />
+			<Button Content='Load CSV 2'
+					VerticalAlignment='Center'
+					Margin='10 0 0 0'
+					Padding='7 3'
+					Click='buttonLoadCSV2' />
+			<Button Content='Compare now'
+					VerticalAlignment='Center'
+					Margin='10 0 0 0'
+					Padding='7 3'
+					Click='buttonCompareNow' />
+			<Button Content='Flip orientation'
+					VerticalAlignment='Center'
+					Margin='10 0 0 0'
+					Padding='7 3'
+					Click='Button_Click' />
+			<Label Content='Fontsize'
+				   VerticalAlignment='Center'
+				   Margin='10 0 0 0' />
+			<Slider Height='23'
+					Name='slider1'
+					Width='80'
+					Minimum='8'
+					Maximum='24'
+					TickFrequency='1'
+					Value='10'
+					SmallChange='1'
+					IsSnapToTickEnabled='True'
+					TickPlacement='BottomRight'
+					IsMoveToPointEnabled='True'
+					Interval='2'
+					Delay='0'
+					ValueChanged='slider1_ValueChanged' />
+			<Label Content='{Binding Value,ElementName=slider1}'
+				   Padding='0'
+				   VerticalAlignment='Center' />
+		</StackPanel>
+		<!--<StackPanel Orientation='Horizontal'
+					DockPanel.Dock='Top'>
+			<Label Content='Active'
+				   ToolTip='Active grid selected cell color' />
+			<my2:ColorComboBox Name='colorComboBox1'
+							   Width='140'
+							   VerticalAlignment='Center'
+							   ToolTip='Active grid selected cell color' />
+			<Label Content='Inactive'
+				   Margin='15 0 0 0'
+				   ToolTip='Inactive grid selected cell color'/>
+			<my2:ColorComboBox  ToolTip='Inactive grid selected cell color'/>
+		</StackPanel>-->
+		<Label DockPanel.Dock='Bottom'
+			   HorizontalAlignment='Right'
+			   VerticalAlignment='Bottom'
+			   Foreground='#888'
+			   FontSize='8'
+			   Padding='3'
+			   Content='About'
+			   MouseLeftButtonUp='aboutLabel_MouseLeftButtonUp' />
+		<Grid Name='gridForDataGrids'>
+			<Grid.RowDefinitions>
+				<RowDefinition />
+				<RowDefinition />
+				<RowDefinition />
+			</Grid.RowDefinitions>
+			<Border Margin='5'
+					Padding='5'
+					CornerRadius='5'
+					BorderBrush='#aaa'
+					BorderThickness='1'>
+				<DockPanel LastChildFill='True'
+						   Grid.Row='0'
+						   Grid.Column='0'>
+					<ComboBox Name='comboboxCSV1HeaderRowCount'
+							  LayoutTransform='{StaticResource rotateTransformEast}'
+							  VerticalAlignment='Top'
+							  ToolTip='Number of header rows' />
+					<my1:ExtendedDataGrid x:Name='dataGridCSV1'
+										  AutoGenerateColumns='True'
+										  SelectionUnit='Cell'
+										  EnableColumnVirtualization='True'
+										  EnableRowVirtualization='True'
+										  SelectedCellsChanged='dataGridCSV1_SelectedCellsChanged'
+										  CanUserAddRows='False'
+										  CanUserSortColumns='False'
+										  RowDetailsVisibilityMode='VisibleWhenSelected'>
+						<my1:ExtendedDataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header='Paste from clipboard'
+										  Click='menuitemPasteFromClipboardCSV1' />
+								<Separator />
+								<MenuItem Header='Save as Excel'
+										  Click='menuitemSaveToExcelFileCSV1' />
+								<MenuItem Header='Save as CSV'
+										  Click='menuitemSaveToCSVFileCSV1' />
+								<MenuItem Header='Save as PDF'
+										  Click='menuitemSaveToPDFFileCSV1' />
+							</ContextMenu>
+						</my1:ExtendedDataGrid.ContextMenu>
+					</my1:ExtendedDataGrid>
+				</DockPanel>
+			</Border>
+			<Border Grid.Row='1'
+					Grid.Column='1'
+					Margin='5'
+					Padding='5'
+					CornerRadius='5'
+					BorderBrush='#aaa'
+					BorderThickness='1'>
+				<DockPanel LastChildFill='True'>
+					<ComboBox Name='comboboxCSV2HeaderRowCount'
+							  LayoutTransform='{StaticResource rotateTransformEast}'
+							  VerticalAlignment='Top'
+							  ToolTip='Number of header rows' />
+					<my1:ExtendedDataGrid x:Name='dataGridCSV2'
+										  AutoGenerateColumns='True'
+										  SelectionUnit='Cell'
+										  EnableColumnVirtualization='True'
+										  EnableRowVirtualization='True'
+										  SelectedCellsChanged='dataGridCSV2_SelectedCellsChanged'
+										  CanUserAddRows='False'
+										  CanUserSortColumns='False'>
+						<my1:ExtendedDataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header='Paste from clipboard'
+										  Click='menuitemPasteFromClipboardCSV2' />
+								<Separator />
+								<MenuItem Header='Save as Excel'
+										  Click='menuitemSaveToExcelFileCSV1' />
+								<MenuItem Header='Save as CSV'
+										  Click='menuitemSaveToCSVFileCSV2' />
+								<MenuItem Header='Save as PDF'
+										  Click='menuitemSaveToPDFFileCSV2' />
+							</ContextMenu>
+						</my1:ExtendedDataGrid.ContextMenu>
+					</my1:ExtendedDataGrid>
+				</DockPanel>
+			</Border>
+			<Border Grid.Row='2'
+					Grid.Column='2'
+					Margin='5 15 5 5'
+					Padding='5'
+					CornerRadius='5'
+					BorderBrush='#aaa'
+					BorderThickness='1'>
+				<DockPanel LastChildFill='True'>
+					<ComboBox LayoutTransform='{StaticResource rotateTransformEast}'
+							  VerticalAlignment='Top'
+							  ToolTip='Number of header rows'
+							  Visibility='Hidden' />
+					<my1:ExtendedDataGrid x:Name='dataGridComparisonResults'
+										  IsReadOnly='True'
+										  MouseDoubleClick='dataGridComparisonResults_MouseDoubleClick'
+										  SelectionUnit='Cell'
+										  SelectedCellsChanged='dataGridComparisonResults_SelectedCellsChanged'
+										  EnableColumnVirtualization='True'
+										  EnableRowVirtualization='True'
+										  CanUserAddRows='False'
+										  CanUserSortColumns='False'>
+						<my1:ExtendedDataGrid.ContextMenu>
+							<ContextMenu>
+								<MenuItem Header='Compare now'
+										  Click='menuitemCompareNow' />
+							</ContextMenu>
+						</my1:ExtendedDataGrid.ContextMenu>
+					</my1:ExtendedDataGrid>
+				</DockPanel>
+			</Border>
+		</Grid>
+		<!--<TabControl Name='tabControl1'>
+			<TabItem Name='tabItemCSV1'
+					 Header='CSV 1'>
+				
+			</TabItem>
+			<TabItem Name='tabItemCSV2'
+					 Header='CSV 2'>
+				
+			</TabItem>
+			<TabItem Name='tabItemComparisonResults'
+					 Header='Comparison'>
+				
+			</TabItem>
+		</TabControl>-->
+	</DockPanel>
+</Window>
