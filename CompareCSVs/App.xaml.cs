@@ -14,7 +14,8 @@ namespace CompareCSVs
 	{
 		protected override void OnStartup(StartupEventArgs e)
 		{
-			SharedClasses.AutoUpdating.CheckForUpdates(null, null, true);
+			SharedClasses.AutoUpdating.CheckForUpdates_ExceptionHandler();
+			//SharedClasses.AutoUpdating.CheckForUpdates(null, null, true);
 			base.OnStartup(e);
 		}
 	}
