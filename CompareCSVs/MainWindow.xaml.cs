@@ -464,7 +464,7 @@ namespace CompareCSVs
 			AboutWindow2.ShowAboutWindow(new System.Collections.ObjectModel.ObservableCollection<DisplayItem>()
 			{ 
 				new DisplayItem("Author", "Francois Hill"),
-				new DisplayItem("Icon obtained from", "http://www.iconfinder.com", "http://www.iconfinder.com/icondetails/7564/128/diagram_graph_log_rating_scale_icon")
+				new DisplayItem("Icon(s) obtained from", "http://www.iconfinder.com", "http://www.iconfinder.com/icondetails/7564/128/diagram_graph_log_rating_scale_icon")
 			},
 			true);
 		}

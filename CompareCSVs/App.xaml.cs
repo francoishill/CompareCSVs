@@ -17,6 +17,9 @@ namespace CompareCSVs
 			SharedClasses.AutoUpdating.CheckForUpdates_ExceptionHandler();
 			//SharedClasses.AutoUpdating.CheckForUpdates(null, null, true);
 			base.OnStartup(e);
+
+			CompareCSVs.MainWindow mw = new MainWindow();
+			mw.ShowDialog();
 		}
 	}
 }
