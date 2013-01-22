@@ -65,6 +65,9 @@
     <Reference Include="ExtendedGrid">
       <HintPath>..\..\..\..\Other\DLLs\WPF ExtendedGrid\ExtendedGrid.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell">
+      <HintPath>..\..\..\DLLs\Windows API\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -91,6 +94,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="..\..\SharedClasses\InputBoxWPF.xaml">
+      <Link>InputBoxWPF.xaml</Link>
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="..\..\SharedClasses\PickItemWPF.xaml">
       <Link>PickItemWPF.xaml</Link>
       <Generator>MSBuild:Compile</Generator>
@@ -111,8 +119,14 @@
     <Compile Include="..\..\SharedClasses\AutoUpdating.cs">
       <Link>AutoUpdating.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\CalledFromService.cs">
+      <Link>CalledFromService.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\ClipboardHelper.cs">
       <Link>ClipboardHelper.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\CompareObjects.cs">
+      <Link>CompareObjects.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\CSVReader.cs">
       <Link>CSVReader.cs</Link>
@@ -120,11 +134,32 @@
     <Compile Include="..\..\SharedClasses\DeveloperCommunication.cs">
       <Link>DeveloperCommunication.cs</Link>
     </Compile>
+    <Compile Include="..\..\SharedClasses\EncodeAndDecodeInterop.cs">
+      <Link>EncodeAndDecodeInterop.cs</Link>
+    </Compile>
     <Compile Include="..\..\SharedClasses\fastJSON.cs">
       <Link>fastJSON.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\FeedbackMessageTypes.cs">
       <Link>FeedbackMessageTypes.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\Generics.cs">
+      <Link>Generics.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\InputBoxWPF.xaml.cs">
+      <Link>InputBoxWPF.xaml.cs</Link>
+      <DependentUpon>InputBoxWPF.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\Logging.cs">
+      <Link>Logging.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\MiniDownloadBarForm.cs">
+      <Link>MiniDownloadBarForm.cs</Link>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\MiniDownloadBarForm.designer.cs">
+      <Link>MiniDownloadBarForm.designer.cs</Link>
+      <DependentUpon>MiniDownloadBarForm.cs</DependentUpon>
     </Compile>
     <Compile Include="..\..\SharedClasses\ProcessesInterop.cs">
       <Link>ProcessesInterop.cs</Link>
@@ -134,6 +169,12 @@
     </Compile>
     <Compile Include="..\..\SharedClasses\RegistryInterop.cs">
       <Link>RegistryInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\SettingsInterop.cs">
+      <Link>SettingsInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\SettingsSimple.cs">
+      <Link>SettingsSimple.cs</Link>
     </Compile>
     <Compile Include="..\..\SharedClasses\ThreadingInterop.cs">
       <Link>ThreadingInterop.cs</Link>
@@ -158,6 +199,15 @@
       <Link>PickItemWPF.xaml.cs</Link>
       <DependentUpon>PickItemWPF.xaml</DependentUpon>
     </Compile>
+    <Compile Include="..\..\SharedClasses\WebInterop.cs">
+      <Link>WebInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\Windows7JumpListsInterop.cs">
+      <Link>Windows7JumpListsInterop.cs</Link>
+    </Compile>
+    <Compile Include="..\..\SharedClasses\WPFdraggableCanvas.cs">
+      <Link>WPFdraggableCanvas.cs</Link>
+    </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -181,6 +231,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="..\..\SharedClasses\MiniDownloadBarForm.resx">
+      <Link>MiniDownloadBarForm.resx</Link>
+      <DependentUpon>MiniDownloadBarForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="..\..\SharedClasses\UserMessages.resx">
       <Link>UserMessages.resx</Link>
       <DependentUpon>UserMessages.cs</DependentUpon>
