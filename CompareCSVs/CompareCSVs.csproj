@@ -22,7 +22,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\..\..\Binaries\CompareCSVs\obj\Debug\x86</BaseIntermediateOutputPath>
+    <OutputPath>..\..\..\..\Binaries\CompareCSVs\bin\Debug\x86</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -31,14 +32,16 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\..\..\Binaries\CompareCSVs\obj\Release\x86</BaseIntermediateOutputPath>
+    <OutputPath>..\..\..\..\Binaries\CompareCSVs\bin\Release\x86</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>bin\Debug\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\..\..\Binaries\CompareCSVs\obj\Debug\AnyCPU</BaseIntermediateOutputPath>
+    <OutputPath>..\..\..\..\Binaries\CompareCSVs\bin\Debug\AnyCPU</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -47,7 +50,8 @@
     <CodeAnalysisFailOnMissingRules>false</CodeAnalysisFailOnMissingRules>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
-    <OutputPath>bin\Release\</OutputPath>
+    <BaseIntermediateOutputPath>..\..\..\..\Binaries\CompareCSVs\obj\Release\AnyCPU</BaseIntermediateOutputPath>
+    <OutputPath>..\..\..\..\Binaries\CompareCSVs\bin\Release\AnyCPU</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
@@ -64,7 +68,7 @@
       <HintPath>..\..\..\DLLs\WPF ColorPicker\ColorPicker.dll</HintPath>
     </Reference>
     <Reference Include="ExtendedGrid">
-      <HintPath>..\..\..\..\Other\DLLs\WPF ExtendedGrid\ExtendedGrid.dll</HintPath>
+      <HintPath>..\..\..\DLLs\WPF ExtendedGrid\ExtendedGrid.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.WindowsAPICodePack.Shell">
       <HintPath>..\..\..\DLLs\Windows API\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
